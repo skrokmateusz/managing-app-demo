@@ -1,8 +1,8 @@
 import { connectToDatabase } from '@/lib/db';
 
-export const getAllEmployees = async (client: any, collection: string, email: {}, sort: {}) => {
+export const getAll = async (client: any, collection: string) => {
 	const db = client.db();
-	const documents = await db.collection(collection).find(email).sort(sort).toArray();
+	const data = await db.collection(collection).find().toArray();
 
-	return documents;
+	return data;
 };

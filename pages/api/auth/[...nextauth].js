@@ -10,7 +10,7 @@ export const authOptions = {
 			async authorize(credentials) {
 				const client = await connectToDatabase();
 
-				const usersCollection = client.db().collection('managing-app');
+				const usersCollection = client.db().collection('authentication');
 				const user = await usersCollection.findOne({ email: credentials.email });
 
 				if (!user) {
@@ -29,8 +29,8 @@ export const authOptions = {
 					return {
 						email: user.email,
 					};
-					return null;
 				}
+				return null;
 			},
 		}),
 	],
